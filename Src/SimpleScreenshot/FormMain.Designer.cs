@@ -33,9 +33,9 @@
             this.MainNotifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
             this.contextMenuStripMain = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.screenShotAltSToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.seteupToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.screenShotAltSToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStripMain.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -51,9 +51,9 @@
             this.contextMenuStripMain.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.contextMenuStripMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.aboutToolStripMenuItem,
+            this.screenShotAltSToolStripMenuItem,
             this.seteupToolStripMenuItem,
-            this.exitToolStripMenuItem,
-            this.screenShotAltSToolStripMenuItem});
+            this.exitToolStripMenuItem});
             this.contextMenuStripMain.Name = "contextMenuStripMain";
             this.contextMenuStripMain.ShowImageMargin = false;
             this.contextMenuStripMain.Size = new System.Drawing.Size(156, 92);
@@ -64,6 +64,13 @@
             this.aboutToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
+            // 
+            // screenShotAltSToolStripMenuItem
+            // 
+            this.screenShotAltSToolStripMenuItem.Name = "screenShotAltSToolStripMenuItem";
+            this.screenShotAltSToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
+            this.screenShotAltSToolStripMenuItem.Text = "ScreenShot(Alt+S)";
+            this.screenShotAltSToolStripMenuItem.Click += new System.EventHandler(this.screenShotAltSToolStripMenuItem_Click);
             // 
             // seteupToolStripMenuItem
             // 
@@ -79,28 +86,22 @@
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
-            // screenShotAltSToolStripMenuItem
-            // 
-            this.screenShotAltSToolStripMenuItem.Name = "screenShotAltSToolStripMenuItem";
-            this.screenShotAltSToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
-            this.screenShotAltSToolStripMenuItem.Text = "ScreenShot(Alt+S)";
-            this.screenShotAltSToolStripMenuItem.Click += new System.EventHandler(this.screenShotAltSToolStripMenuItem_Click);
-            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(822, 471);
+            this.ClientSize = new System.Drawing.Size(874, 534);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FormMain";
-            this.Text = "Form1";
+            this.ShowInTaskbar = false;
+            this.Text = "Screenshot";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormMain_FormClosing);
             this.Load += new System.EventHandler(this.FormMain_Load);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.FormMain_KeyUp);
-            this.MouseClick += new System.Windows.Forms.MouseEventHandler(this.FormMain_MouseClick);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.FormMain_MouseDown);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.FormMain_MouseMove);
             this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.FormMain_MouseUp);
