@@ -28,5 +28,17 @@ namespace SimpleScreenshot
                 this.Close();
             }
         }
+
+        private void FormStartOK_Load(object sender, EventArgs e)
+        {
+            HotKey Hotkey = new HotKey();
+            Hotkey.Ctrl = Properties.Settings.Default.HotKey_Ctrl;
+            Hotkey.Shift = Properties.Settings.Default.HotKey_Shift;
+            Hotkey.Alt = Properties.Settings.Default.HotKey_Alt;
+            Hotkey.KeyCode = Properties.Settings.Default.HotKey_KeyCode;
+            Hotkey.KeyValue = Properties.Settings.Default.HotKey_KeyValue;
+
+            this.labelInfo.Text = "快捷键: " + Hotkey.ToString();
+        }
     }
 }

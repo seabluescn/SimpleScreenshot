@@ -54,11 +54,23 @@
     <Compile Include="FormMain.Designer.cs">
       <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormOK.cs">
+    <Compile Include="FormSetup.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormOK.Designer.cs">
-      <DependentUpon>FormOK.cs</DependentUpon>
+    <Compile Include="FormSetup.Designer.cs">
+      <DependentUpon>FormSetup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormSetupHotKey.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormSetupHotKey.Designer.cs">
+      <DependentUpon>FormSetupHotKey.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormSuccess.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormSuccess.Designer.cs">
+      <DependentUpon>FormSuccess.cs</DependentUpon>
     </Compile>
     <Compile Include="FormStartOK.cs">
       <SubType>Form</SubType>
@@ -66,30 +78,37 @@
     <Compile Include="FormStartOK.Designer.cs">
       <DependentUpon>FormStartOK.cs</DependentUpon>
     </Compile>
+    <Compile Include="HotKey.cs" />
     <Compile Include="HotKeyHelpper.cs" />
     <Compile Include="PrimaryScreen.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Toolbar.cs" />
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormOK.resx">
-      <DependentUpon>FormOK.cs</DependentUpon>
+    <EmbeddedResource Include="FormSetup.resx">
+      <DependentUpon>FormSetup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormSetupHotKey.resx">
+      <DependentUpon>FormSetupHotKey.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormSuccess.resx">
+      <DependentUpon>FormSuccess.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormStartOK.resx">
       <DependentUpon>FormStartOK.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -105,6 +124,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app.ico" />
+    <None Include="Resources\queding.png" />
     <None Include="Resources\Success.png" />
     <None Include="Resources\Splitter.png" />
     <None Include="Resources\word_a.png" />

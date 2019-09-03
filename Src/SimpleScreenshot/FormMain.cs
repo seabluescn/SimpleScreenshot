@@ -67,7 +67,15 @@ namespace SimpleScreenshot
         private void FormMain_Load(object sender, EventArgs e)
         { 
             HotKetID = HotKeyHelpper.GlobalAddAtom("SimpleScreenshot-HotKey");
-            var result = HotKeyHelpper.RegisterHotKey(this.Handle, HotKetID, HotKeyHelpper.KeyModifiers.Alt, (int)Keys.S);
+
+            Debug.WriteLine($"FormMain_Load:HotKetID={HotKetID}");
+
+            HotKeyHelpper.KeyModifiers keyModifiers 
+                = (Settings.Default.HotKey_Ctrl ? HotKeyHelpper.KeyModifiers.Ctrl : HotKeyHelpper.KeyModifiers.None)
+                | (Settings.Default.HotKey_Shift ? HotKeyHelpper.KeyModifiers.Shift : HotKeyHelpper.KeyModifiers.None)
+                | (Settings.Default.HotKey_Alt ? HotKeyHelpper.KeyModifiers.Alt : HotKeyHelpper.KeyModifiers.None);
+            
+            var result = HotKeyHelpper.RegisterHotKey(this.Handle, HotKetID, keyModifiers, Settings.Default.HotKey_KeyValue);
 
             if (result == false)
             {
@@ -106,6 +114,7 @@ namespace SimpleScreenshot
         private void ProcessHotkey(Message m)
         {
             var keyid = m.WParam.ToInt32();
+            Debug.WriteLine($"ProcessHotkey:keyid={keyid},HotKetID={HotKetID}");
             if (keyid == HotKetID)
             {
                 StartScreenshot();
@@ -180,7 +189,7 @@ namespace SimpleScreenshot
             if (ScreenshotStatus != ScreenshotStatus.Screenshoting)
                 return;
 
-            Debug.WriteLine($"1 Mouse move:{e.Button},{e.Location.X},{e.Location.Y}");
+            //Debug.WriteLine($"1 Mouse move:{e.Button},{e.Location.X},{e.Location.Y}");
 
             CurrMouseLocation = e.Location;
 
@@ -518,7 +527,7 @@ namespace SimpleScreenshot
 
                 StopScreeshot();
 
-                new FormOK().ShowDialog();               
+                new FormSuccess().ShowDialog();               
             }           
         }
 
@@ -555,7 +564,7 @@ namespace SimpleScreenshot
 
         protected override void OnPaintBackground(PaintEventArgs e)
         {
-            Debug.WriteLine($"2 OnPaintBackground");
+            //Debug.WriteLine($"2 OnPaintBackground");
 
             if (ScreenshotStatus != ScreenshotStatus.Screenshoting)
                 return;
@@ -594,7 +603,7 @@ namespace SimpleScreenshot
 
         protected override void OnPaint(PaintEventArgs e)
         {           
-            Debug.WriteLine($"3 OnPaint:CurrMouseLocation:{CurrMouseLocation}");
+            //Debug.WriteLine($"3 OnPaint:CurrMouseLocation:{CurrMouseLocation}");
 
             if (ScreenshotStatus != ScreenshotStatus.Screenshoting)
                 return;
@@ -770,7 +779,12 @@ namespace SimpleScreenshot
 
         private void seteupToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            FormSetup frmSetup = new FormSetup();
 
+            if(frmSetup.ShowDialog()== DialogResult.OK )
+            {
+
+            }
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)

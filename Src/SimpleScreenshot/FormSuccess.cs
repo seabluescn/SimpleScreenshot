@@ -10,11 +10,11 @@ using System.Windows.Forms;
 
 namespace SimpleScreenshot
 {
-    public partial class FormOK : Form
+    public partial class FormSuccess : Form
     {
         private int count = 0;
 
-        public FormOK()
+        public FormSuccess()
         {
             InitializeComponent();
         }

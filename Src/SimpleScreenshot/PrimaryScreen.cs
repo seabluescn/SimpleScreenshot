@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace SimpleScreenshot
 {
-    public class PrimaryScreen
+    internal sealed class PrimaryScreen
     {       
         [DllImport("user32.dll")]
         static extern IntPtr GetDC(IntPtr ptr);

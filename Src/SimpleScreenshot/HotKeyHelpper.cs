@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SimpleScreenshot
 {
-    public class HotKeyHelpper
+    internal class HotKeyHelpper
     {
         /// <summary>
         /// 如果函数执行成功，返回值不为0。
@@ -62,6 +62,7 @@ namespace SimpleScreenshot
             Shift = 4,
             WindowsKey = 8
         }
+
         /// <summary>
         /// 热键的对应的消息ID
         /// </summary>

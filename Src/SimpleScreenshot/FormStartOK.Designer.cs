@@ -39,9 +39,10 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("宋体", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(41, 39);
+            this.label1.Location = new System.Drawing.Point(55, 49);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(203, 20);
+            this.label1.Size = new System.Drawing.Size(256, 25);
             this.label1.TabIndex = 0;
             this.label1.Text = "Screenshot已经启动";
             // 
@@ -50,11 +51,12 @@
             this.labelInfo.AutoSize = true;
             this.labelInfo.Font = new System.Drawing.Font("宋体", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.labelInfo.ForeColor = System.Drawing.Color.White;
-            this.labelInfo.Location = new System.Drawing.Point(41, 94);
+            this.labelInfo.Location = new System.Drawing.Point(55, 118);
+            this.labelInfo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelInfo.Name = "labelInfo";
-            this.labelInfo.Size = new System.Drawing.Size(139, 20);
+            this.labelInfo.Size = new System.Drawing.Size(177, 25);
             this.labelInfo.TabIndex = 1;
-            this.labelInfo.Text = "快捷键：Alt+A";
+            this.labelInfo.Text = "快捷键：Alt+S";
             // 
             // timer1
             // 
@@ -63,16 +65,18 @@
             // 
             // FormStartOK
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.ClientSize = new System.Drawing.Size(291, 161);
+            this.ClientSize = new System.Drawing.Size(399, 201);
             this.Controls.Add(this.labelInfo);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FormStartOK";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormStartOK";
+            this.Load += new System.EventHandler(this.FormStartOK_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

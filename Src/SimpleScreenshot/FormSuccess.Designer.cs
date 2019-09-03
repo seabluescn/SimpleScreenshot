@@ -1,6 +1,6 @@
 ﻿namespace SimpleScreenshot
 {
-    partial class FormOK
+    partial class FormSuccess
     {
         /// <summary>
         /// Required designer variable.

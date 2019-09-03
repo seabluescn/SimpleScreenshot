@@ -56,45 +56,45 @@
             this.exitToolStripMenuItem});
             this.contextMenuStripMain.Name = "contextMenuStripMain";
             this.contextMenuStripMain.ShowImageMargin = false;
-            this.contextMenuStripMain.Size = new System.Drawing.Size(156, 92);
+            this.contextMenuStripMain.Size = new System.Drawing.Size(138, 100);
             // 
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(137, 24);
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
             // screenShotAltSToolStripMenuItem
             // 
             this.screenShotAltSToolStripMenuItem.Name = "screenShotAltSToolStripMenuItem";
-            this.screenShotAltSToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
-            this.screenShotAltSToolStripMenuItem.Text = "ScreenShot(Alt+S)";
+            this.screenShotAltSToolStripMenuItem.Size = new System.Drawing.Size(137, 24);
+            this.screenShotAltSToolStripMenuItem.Text = "ScreenShot";
             this.screenShotAltSToolStripMenuItem.Click += new System.EventHandler(this.screenShotAltSToolStripMenuItem_Click);
             // 
             // seteupToolStripMenuItem
             // 
             this.seteupToolStripMenuItem.Name = "seteupToolStripMenuItem";
-            this.seteupToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
+            this.seteupToolStripMenuItem.Size = new System.Drawing.Size(137, 24);
             this.seteupToolStripMenuItem.Text = "Seteup";
             this.seteupToolStripMenuItem.Click += new System.EventHandler(this.seteupToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(137, 24);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // FormMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(823, 493);
+            this.ClientSize = new System.Drawing.Size(930, 605);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "FormMain";
             this.ShowInTaskbar = false;
             this.Text = "Screenshot";

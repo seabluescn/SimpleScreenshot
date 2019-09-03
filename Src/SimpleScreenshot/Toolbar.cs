@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SimpleScreenshot
 {
-    public class Toolbar
+    internal class Toolbar
     {
         public Bitmap Icon { get; set; }
         public Bitmap Icon_A { get; set; }
