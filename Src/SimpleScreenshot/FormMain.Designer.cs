@@ -92,7 +92,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(874, 534);
+            this.ClientSize = new System.Drawing.Size(823, 493);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FormMain";
@@ -102,6 +102,7 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormMain_FormClosing);
             this.Load += new System.EventHandler(this.FormMain_Load);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.FormMain_KeyUp);
+            this.MouseClick += new System.Windows.Forms.MouseEventHandler(this.FormMain_MouseClick);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.FormMain_MouseDown);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.FormMain_MouseMove);
             this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.FormMain_MouseUp);

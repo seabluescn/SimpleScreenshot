@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SimpleScreenshot.Properties;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,6 +17,7 @@ namespace SimpleScreenshot
     public partial class FormMain : Form
     {
         private short HotKetID;
+        private Bitmap RealScreenImage = null;
         private Bitmap ScreenSrcImage = null;
         private float Scale_X = 1, Scale_Y = 1;
 
@@ -39,6 +41,9 @@ namespace SimpleScreenshot
         MoveSelectRectState MoveSelectRectState = MoveSelectRectState.None;
         private Point MoveStartLocation = new Point();     //移动选取鼠标开始位置
         private Point MoveStopLocation = new Point();      //移动选取鼠标结束位置
+
+        Rectangle toolbarRect = new Rectangle();
+        private List<Toolbar> Toolbars = new List<Toolbar>();
         
 
         #region BaseLogic       
@@ -46,6 +51,17 @@ namespace SimpleScreenshot
         public FormMain()
         {
             InitializeComponent();
+
+            Toolbars.Add(new Toolbar(Resources.rectangle,Resources.rectangle_a));
+            Toolbars.Add(new Toolbar(Resources.circle, Resources.circle_a));
+            Toolbars.Add(new Toolbar(Resources.arraw, Resources.arraw_a));
+            Toolbars.Add(new Toolbar(Resources.pen, Resources.pen_a));
+            Toolbars.Add(new Toolbar(Resources.mask, Resources.mask_a));
+            Toolbars.Add(new Toolbar(Resources.word, Resources.word_a));
+            Toolbars.Add(new Toolbar(Resources.Splitter, Resources.Splitter));
+            Toolbars.Add(new Toolbar(Resources.save, Resources.save_a));
+            Toolbars.Add(new Toolbar(Resources.cancel, Resources.cancel_a));
+            Toolbars.Add(new Toolbar(Resources.ok, Resources.ok_a));
         }
 
         private void FormMain_Load(object sender, EventArgs e)
@@ -55,9 +71,11 @@ namespace SimpleScreenshot
 
             if (result == false)
             {
-                MessageBox.Show("热键冲突");
-                this.Close();
-                return;
+                MessageBox.Show("热键冲突,请修改热键。","Simple Screenshot");
+            }
+            else
+            {
+                new FormStartOK().ShowDialog();
             }
 
             SetStyle(ControlStyles.UserPaint, true);
@@ -90,41 +108,67 @@ namespace SimpleScreenshot
             var keyid = m.WParam.ToInt32();
             if (keyid == HotKetID)
             {
-                Debug.WriteLine($"DESKTOP:{PrimaryScreen.DESKTOP.Width},{PrimaryScreen.DESKTOP.Height}");
-                Debug.WriteLine($"DPI:{PrimaryScreen.DpiX},{PrimaryScreen.DpiY}");
-                Debug.WriteLine($"Scale:{PrimaryScreen.ScaleX},{PrimaryScreen.ScaleY}");
-
-                Scale_X = PrimaryScreen.ScaleX;
-                Scale_Y = PrimaryScreen.ScaleY;
-
-                var size = PrimaryScreen.DESKTOP;
-                var width = size.Width;
-                var height = size.Height;
-
-                Bitmap imageSRC = new Bitmap(width, height);
-                using (Graphics graphics = Graphics.FromImage(imageSRC))
-                {
-                    graphics.CopyFromScreen(0, 0, 0, 0, new Size(width, height), CopyPixelOperation.SourceCopy);
-
-                    ScreenSrcImage?.Dispose();
-                    ScreenSrcImage = imageSRC;
-                }  
-
-                this.ScreenshotStatus = ScreenshotStatus.Screenshoting;
-                this.Visible = true;
+                StartScreenshot();
             }
         }
 
         private void FormMain_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Escape)
-            {                
-                this.Visible = false; 
-              
-                this.ScreenshotStatus = ScreenshotStatus.None;
-                this.OperatorStatus = OperatorStatus.None;
-                this.Cursor = Cursors.Default;
+            {
+                StopScreeshot();
             }
+        }
+
+        private void StartScreenshot()
+        {
+            Debug.WriteLine($"DESKTOP:{PrimaryScreen.DESKTOP.Width},{PrimaryScreen.DESKTOP.Height}");
+            Debug.WriteLine($"DPI:{PrimaryScreen.DpiX},{PrimaryScreen.DpiY}");
+            Debug.WriteLine($"Scale:{PrimaryScreen.ScaleX},{PrimaryScreen.ScaleY}");
+
+            Scale_X = PrimaryScreen.ScaleX;
+            Scale_Y = PrimaryScreen.ScaleY;
+
+            var size = PrimaryScreen.DESKTOP;
+            var width = size.Width;
+            var height = size.Height;
+
+            RealScreenImage = new Bitmap(width, height);
+            using (Graphics graphics = Graphics.FromImage(RealScreenImage))
+            {
+                graphics.CopyFromScreen(0, 0, 0, 0, new Size(width, height), CopyPixelOperation.SourceCopy);
+
+                if (Scale_X > 1 || Scale_Y > 1)
+                {
+                    Bitmap imageSRC = new Bitmap(this.Width, this.Height);
+                    using (Graphics g = Graphics.FromImage(imageSRC))
+                    {
+                        Rectangle rectSrc = new Rectangle(0, 0, width, height);
+                        Rectangle rectDes = new Rectangle(0, 0, this.Width, this.Height);
+                        g.DrawImage(RealScreenImage, rectDes, rectSrc, GraphicsUnit.Pixel);
+
+                        ScreenSrcImage?.Dispose();
+                        ScreenSrcImage = imageSRC;
+                    }
+                }
+                else
+                {
+                    ScreenSrcImage?.Dispose();
+                    ScreenSrcImage = RealScreenImage;
+                }
+            }
+
+            this.ScreenshotStatus = ScreenshotStatus.Screenshoting;
+            this.Visible = true;
+        }               
+
+        private void StopScreeshot()
+        {
+            this.Visible = false;
+
+            this.ScreenshotStatus = ScreenshotStatus.None;
+            this.OperatorStatus = OperatorStatus.None;
+            this.Cursor = Cursors.Default;
         }
 
         #endregion
@@ -296,10 +340,22 @@ namespace SimpleScreenshot
                     if (SelectRect.Contains(e.Location))
                     {
                         this.Cursor = Cursors.SizeAll;
+
+                        if (toolbarRect.Contains(e.Location))
+                        {
+                            this.Cursor = Cursors.Default;
+                            this.Invalidate(toolbarRect);
+                        }
+
                         return;
                     }
 
                     this.Cursor = Cursors.Default;
+
+                    if (toolbarRect.Contains(e.Location))
+                    {
+                        this.Invalidate(toolbarRect);
+                    }
                 }                
             }             
         }
@@ -405,6 +461,98 @@ namespace SimpleScreenshot
             }
         }
 
+        private void FormMain_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (ScreenshotStatus != ScreenshotStatus.Screenshoting)
+                return;
+
+            if(OperatorStatus == OperatorStatus.FinishedSelect && MoveSelectRectState == MoveSelectRectState.None)
+            {
+                if (toolbarRect.Contains(e.Location))
+                {
+                    int toolbarHeight = 40;
+                    int count = (e.Location.X - toolbarRect.Left) / toolbarHeight;
+                    ToolbarType toolbarType = (ToolbarType)count;
+                   
+                    switch(toolbarType)
+                    {
+                        case ToolbarType.Save:
+                            toolbarSave_Click();
+                            break;
+
+                        case ToolbarType.Cancel:
+                            toolbarCancele_Click();
+                            break;
+
+                        case ToolbarType.OK:
+                            toolbarOK_Click();
+                            break;
+                    }
+                }
+            }
+        }
+
+        #region toolbar_click
+
+        private void toolbarSave_Click()
+        {
+            DateTime now = DateTime.Now;
+            SaveFileDialog fileDialog = new SaveFileDialog
+            {
+                Filter = "PNG(*.png)|*.png|JPEG(*.jpg)|*.jpg|BMP(*.bmp)|*.bmp",
+                FileName = $"Screenshot_{now.Year}{now.Month,0:D2}{now.Day,0:D2}{now.Hour,0:D2}{now.Minute,0:D2}{now.Second,0:D2}"
+            };             
+
+            if (fileDialog.ShowDialog()== DialogResult.OK)
+            {   
+                ImageFormat imageFormat = ImageFormat.Png;
+                switch (fileDialog.FilterIndex)
+                {
+                    case 1: imageFormat = ImageFormat.Png; break;
+                    case 2: imageFormat = ImageFormat.Jpeg; break;
+                    case 3: imageFormat = ImageFormat.Bmp; break;                    
+                }
+
+                Bitmap bitmap = GetSelectedImage();               
+                bitmap.Save(fileDialog.FileName, imageFormat);
+
+                StopScreeshot();
+
+                new FormOK().ShowDialog();               
+            }           
+        }
+
+        private void toolbarCancele_Click()
+        {
+            StopScreeshot();
+        }
+
+        private void toolbarOK_Click()
+        {
+            Bitmap bitmap = GetSelectedImage();
+
+            Clipboard.SetDataObject(bitmap);
+            StopScreeshot();
+        }
+
+        private Bitmap GetSelectedImage()
+        {
+            Rectangle RealRect = SelectRect;
+            if ((Scale_X - 1.0f) > 0.05f || (Scale_Y - 1.0f) > 0.05f)
+            {
+                RealRect = new Rectangle((int)(SelectRect.Left * Scale_X), (int)(SelectRect.Top * Scale_Y), (int)(SelectRect.Width * Scale_X), (int)(SelectRect.Height * Scale_Y));
+            }
+
+            Bitmap bitmap = new Bitmap(RealRect.Width, RealRect.Height);
+            Graphics g = Graphics.FromImage(bitmap);
+            g.DrawImage(this.RealScreenImage, 0, 0, RealRect, GraphicsUnit.Pixel);
+            g.Dispose();
+            return bitmap;
+        }
+
+        #endregion
+
+
         protected override void OnPaintBackground(PaintEventArgs e)
         {
             Debug.WriteLine($"2 OnPaintBackground");
@@ -433,7 +581,7 @@ namespace SimpleScreenshot
                 ImageAttributes imageAttributes = new ImageAttributes();
                 imageAttributes.SetColorMatrix(matrix, ColorMatrixFlag.Default, ColorAdjustType.Bitmap);
 
-                Rectangle FullRect = new Rectangle(0, 0, this.Width, this.Height);
+                Rectangle FullRect = new Rectangle(0, 0, this.Width, this.Height);               
                 g.DrawImage(this.ScreenSrcImage, FullRect, 0, 0, this.Width, this.Height, GraphicsUnit.Pixel, imageAttributes);
             }
             else
@@ -477,10 +625,9 @@ namespace SimpleScreenshot
 
             //base.OnPaint(e);
         }
-
-
+        
         private void DrawSelectAare(Graphics g)
-        {
+        {            
             g.DrawImage(this.ScreenSrcImage, SelectRect, SelectRect, GraphicsUnit.Pixel);
             g.DrawRectangle(new Pen(Brushes.Green, 1), SelectRect);
 
@@ -555,7 +702,7 @@ namespace SimpleScreenshot
             Color pointColor = ScreenSrcImage.GetPixel(CurrMouseLocation.X, CurrMouseLocation.Y);
             g.DrawString($"RGB:({pointColor.R},{pointColor.G},{pointColor.B})", font, Brushes.White, PosRect.Left + 10, PosRect.Top + 30);
         }
-
+         
         private void DrawToolbar(Graphics g)
         {
             int offset = 4;
@@ -586,27 +733,39 @@ namespace SimpleScreenshot
                 }
             }
 
-            Rectangle toolbarRect = new Rectangle(toolbarLeft, toolbarTop, toolbarWidth, toolbarHeight);
+            toolbarRect = new Rectangle(toolbarLeft, toolbarTop, toolbarWidth, toolbarHeight);
             g.FillRectangle(Brushes.White, toolbarRect);
 
-            Rectangle toolSave = new Rectangle(toolbarRect.Left, toolbarRect.Top, toolbarHeight, toolbarHeight);
-            Rectangle toolCancel = new Rectangle(toolbarRect.Left+ toolbarHeight, toolbarRect.Top, toolbarHeight, toolbarHeight);
-            Rectangle toolOK = new Rectangle(toolbarRect.Left + toolbarHeight*2, toolbarRect.Top, toolbarHeight, toolbarHeight);
+            int count = 0;
+            foreach(var toolbar in Toolbars)
+            {
+                toolbar.Rectangle = new Rectangle(toolbarRect.Left + toolbarHeight * count, toolbarRect.Top, toolbarHeight, toolbarHeight);
 
-            g.DrawImage(Properties.Resources.save, toolSave.Left + 4, toolSave.Top + 4);
-            g.DrawImage(Properties.Resources.cancel, toolCancel.Left + 4, toolCancel.Top + 4);
-            g.DrawImage(Properties.Resources.ok, toolOK.Left + 4, toolOK.Top + 4);
+                if (toolbar.Rectangle.Contains(CurrMouseLocation))
+                {
+                    g.DrawImage(toolbar.Icon_A, toolbar.Rectangle.Left + 4, toolbar.Rectangle.Top + 4);
+                }
+                else
+                {
+                    g.DrawImage(toolbar.Icon, toolbar.Rectangle.Left + 4, toolbar.Rectangle.Top + 4);
+                }
 
-
+                count++;
+            }   
         }
 
         #endregion
 
         #region Menu Control
 
-        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        private void screenShotAltSToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.Close();
+            StartScreenshot();
+        }                 
+
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
 
         private void seteupToolStripMenuItem_Click(object sender, EventArgs e)
@@ -614,16 +773,9 @@ namespace SimpleScreenshot
 
         }
 
-        private void screenShotAltSToolStripMenuItem_Click(object sender, EventArgs e)
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
-        }
-
-       
-
-        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
+            this.Close();
         }
 
         #endregion
@@ -654,5 +806,19 @@ namespace SimpleScreenshot
         MoveRightMiddle,
         MoveTopMiddle,
         MoveBottomMiddle
+    }
+
+    public enum ToolbarType
+    {
+        Rectangle=0,
+        Circle=1,
+        Arrar=2,
+        Pen=3,
+        Mask=4,
+        Word=5,
+        None=6,
+        Save=7,
+        Cancel=8,
+        OK=9
     }
 }

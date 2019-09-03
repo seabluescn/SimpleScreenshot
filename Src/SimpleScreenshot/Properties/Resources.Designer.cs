@@ -63,6 +63,26 @@ namespace SimpleScreenshot.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        internal static System.Drawing.Bitmap arraw {
+            get {
+                object obj = ResourceManager.GetObject("arraw", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap arraw_a {
+            get {
+                object obj = ResourceManager.GetObject("arraw_a", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         internal static System.Drawing.Bitmap cancel {
             get {
                 object obj = ResourceManager.GetObject("cancel", resourceCulture);
@@ -76,6 +96,46 @@ namespace SimpleScreenshot.Properties {
         internal static System.Drawing.Bitmap cancel_a {
             get {
                 object obj = ResourceManager.GetObject("cancel_a", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap circle {
+            get {
+                object obj = ResourceManager.GetObject("circle", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap circle_a {
+            get {
+                object obj = ResourceManager.GetObject("circle_a", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap mask {
+            get {
+                object obj = ResourceManager.GetObject("mask", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap mask_a {
+            get {
+                object obj = ResourceManager.GetObject("mask_a", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -103,6 +163,46 @@ namespace SimpleScreenshot.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        internal static System.Drawing.Bitmap pen {
+            get {
+                object obj = ResourceManager.GetObject("pen", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap pen_a {
+            get {
+                object obj = ResourceManager.GetObject("pen_a", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap rectangle {
+            get {
+                object obj = ResourceManager.GetObject("rectangle", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap rectangle_a {
+            get {
+                object obj = ResourceManager.GetObject("rectangle_a", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         internal static System.Drawing.Bitmap save {
             get {
                 object obj = ResourceManager.GetObject("save", resourceCulture);
@@ -116,6 +216,46 @@ namespace SimpleScreenshot.Properties {
         internal static System.Drawing.Bitmap save_a {
             get {
                 object obj = ResourceManager.GetObject("save_a", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap Splitter {
+            get {
+                object obj = ResourceManager.GetObject("Splitter", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap Success {
+            get {
+                object obj = ResourceManager.GetObject("Success", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap word {
+            get {
+                object obj = ResourceManager.GetObject("word", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap word_a {
+            get {
+                object obj = ResourceManager.GetObject("word_a", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

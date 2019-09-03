@@ -54,12 +54,31 @@
     <Compile Include="FormMain.Designer.cs">
       <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormOK.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormOK.Designer.cs">
+      <DependentUpon>FormOK.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormStartOK.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormStartOK.Designer.cs">
+      <DependentUpon>FormStartOK.cs</DependentUpon>
+    </Compile>
     <Compile Include="HotKeyHelpper.cs" />
     <Compile Include="PrimaryScreen.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Toolbar.cs" />
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormOK.resx">
+      <DependentUpon>FormOK.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormStartOK.resx">
+      <DependentUpon>FormStartOK.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -86,12 +105,27 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app.ico" />
-    <None Include="Resources\save_a.png" />
+    <None Include="Resources\Success.png" />
+    <None Include="Resources\Splitter.png" />
+    <None Include="Resources\word_a.png" />
+    <None Include="Resources\word.png" />
     <None Include="Resources\save.png" />
+    <None Include="Resources\save _a.png" />
+    <None Include="Resources\rectangle_a.png" />
+    <None Include="Resources\rectangle.png" />
+    <None Include="Resources\pen_a.png" />
+    <None Include="Resources\pen.png" />
     <None Include="Resources\ok_a.png" />
     <None Include="Resources\ok.png" />
+    <None Include="Resources\mask_a.png" />
+    <None Include="Resources\mask.png" />
+    <None Include="Resources\circle_a.png" />
+    <None Include="Resources\circle.png" />
     <None Include="Resources\cancel_a.png" />
     <None Include="Resources\cancel.png" />
+    <None Include="Resources\arraw_a.png" />
+    <None Include="Resources\arraw.png" />
+    <None Include="Resources\save_a.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
