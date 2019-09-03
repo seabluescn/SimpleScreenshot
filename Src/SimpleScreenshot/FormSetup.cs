@@ -54,7 +54,6 @@ namespace SimpleScreenshot
                 Properties.Settings.Default.Save();
 
                 this.lblReset.Visible = true;
-
             }
         }
     }
