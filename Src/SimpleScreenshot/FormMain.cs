@@ -51,13 +51,8 @@ namespace SimpleScreenshot
         public FormMain()
         {
             InitializeComponent();
-
-            Toolbars.Add(new Toolbar(Resources.rectangle,Resources.rectangle_a));
-            Toolbars.Add(new Toolbar(Resources.circle, Resources.circle_a));
-            Toolbars.Add(new Toolbar(Resources.arraw, Resources.arraw_a));
-            Toolbars.Add(new Toolbar(Resources.pen, Resources.pen_a));
-            Toolbars.Add(new Toolbar(Resources.mask, Resources.mask_a));
-            Toolbars.Add(new Toolbar(Resources.word, Resources.word_a));
+            
+            Toolbars.Add(new Toolbar(Resources.edit, Resources.edit_a));
             Toolbars.Add(new Toolbar(Resources.Splitter, Resources.Splitter));
             Toolbars.Add(new Toolbar(Resources.save, Resources.save_a));
             Toolbars.Add(new Toolbar(Resources.cancel, Resources.cancel_a));
@@ -496,6 +491,10 @@ namespace SimpleScreenshot
                         case ToolbarType.OK:
                             toolbarOK_Click();
                             break;
+
+                        case ToolbarType.Edit:
+                            toolbarEdit_Click();
+                            break;
                     }
                 }
             }
@@ -559,6 +558,14 @@ namespace SimpleScreenshot
             return bitmap;
         }
 
+        private void toolbarEdit_Click()
+        {
+            StopScreeshot();
+
+            FormEdit formEdit = new FormEdit();
+            formEdit.Show();
+        }
+
         #endregion
 
 
@@ -592,6 +599,7 @@ namespace SimpleScreenshot
 
                 Rectangle FullRect = new Rectangle(0, 0, this.Width, this.Height);               
                 g.DrawImage(this.ScreenSrcImage, FullRect, 0, 0, this.Width, this.Height, GraphicsUnit.Pixel, imageAttributes);
+                //g.DrawImage(this.RealScreenImage, FullRect, 0, 0, this.Width, this.Height, GraphicsUnit.World);
             }
             else
             {
@@ -715,7 +723,7 @@ namespace SimpleScreenshot
         private void DrawToolbar(Graphics g)
         {
             int offset = 4;
-            int toolbarWidth = 400;
+            int toolbarWidth = 200;
             int toolbarHeight = 40;
 
             int toolbarLeft = SelectRect.Right - toolbarWidth;
@@ -824,15 +832,10 @@ namespace SimpleScreenshot
 
     public enum ToolbarType
     {
-        Rectangle=0,
-        Circle=1,
-        Arrar=2,
-        Pen=3,
-        Mask=4,
-        Word=5,
-        None=6,
-        Save=7,
-        Cancel=8,
-        OK=9
+        Edit=0,       
+        None=1,
+        Save=2,
+        Cancel=3,
+        OK=4
     }
 }
