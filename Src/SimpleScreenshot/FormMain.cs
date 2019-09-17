@@ -581,6 +581,7 @@ namespace SimpleScreenshot
 
             Graphics g = e.Graphics;
             g.CompositingQuality = CompositingQuality.HighQuality;
+            g.InterpolationMode = InterpolationMode.HighQualityBicubic;
 
             if (OperatorStatus != OperatorStatus.None)
             {
@@ -621,6 +622,7 @@ namespace SimpleScreenshot
 
             Graphics g = e.Graphics;
             g.CompositingQuality = CompositingQuality.HighQuality;
+            g.InterpolationMode = InterpolationMode.HighQualityBicubic;
 
             //绘制选择区域
             if (OperatorStatus != OperatorStatus.None)
