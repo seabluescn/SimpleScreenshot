@@ -88,11 +88,11 @@
             // 
             // FormMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(930, 605);
+            this.ClientSize = new System.Drawing.Size(870, 493);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "FormMain";
@@ -101,6 +101,7 @@
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormMain_FormClosing);
             this.Load += new System.EventHandler(this.FormMain_Load);
+            this.Shown += new System.EventHandler(this.FormMain_Shown);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.FormMain_KeyUp);
             this.MouseClick += new System.Windows.Forms.MouseEventHandler(this.FormMain_MouseClick);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.FormMain_MouseDown);

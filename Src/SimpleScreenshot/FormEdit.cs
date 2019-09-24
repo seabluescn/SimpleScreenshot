@@ -21,5 +21,10 @@ namespace SimpleScreenshot
         {
 
         }
+
+        private void FormEdit_Shown(object sender, EventArgs e)
+        {
+
+        }
     }
 }

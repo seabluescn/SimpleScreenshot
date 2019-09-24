@@ -127,9 +127,11 @@ namespace SimpleScreenshot
         private void StartScreenshot()
         {
             Debug.WriteLine($"DESKTOP:{PrimaryScreen.DESKTOP.Width},{PrimaryScreen.DESKTOP.Height}");
+            Debug.WriteLine($"WorkingArea:{Screen.PrimaryScreen.WorkingArea.Width},{Screen.PrimaryScreen.WorkingArea.Height}");
             Debug.WriteLine($"DPI:{PrimaryScreen.DpiX},{PrimaryScreen.DpiY}");
             Debug.WriteLine($"Scale:{PrimaryScreen.ScaleX},{PrimaryScreen.ScaleY}");
 
+          
             Scale_X = PrimaryScreen.ScaleX;
             Scale_Y = PrimaryScreen.ScaleY;
 
@@ -173,6 +175,12 @@ namespace SimpleScreenshot
             this.ScreenshotStatus = ScreenshotStatus.None;
             this.OperatorStatus = OperatorStatus.None;
             this.Cursor = Cursors.Default;
+        }
+
+
+        private void FormMain_Shown(object sender, EventArgs e)
+        {
+           
         }
 
         #endregion
@@ -796,6 +804,7 @@ namespace SimpleScreenshot
 
             }
         }
+
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {

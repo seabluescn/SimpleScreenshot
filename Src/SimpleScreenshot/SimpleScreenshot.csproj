@@ -133,6 +133,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app.ico" />
+    <None Include="Resources\save_a.png" />
     <None Include="Resources\edit_a.png" />
     <None Include="Resources\edit.png" />
     <None Include="Resources\queding.png" />
@@ -156,7 +157,6 @@
     <None Include="Resources\cancel.png" />
     <None Include="Resources\arraw_a.png" />
     <None Include="Resources\arraw.png" />
-    <None Include="Resources\save_a.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

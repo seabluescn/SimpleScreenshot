@@ -40,6 +40,7 @@
             this.Name = "FormEdit";
             this.Text = "Simple Screenshot Edit";
             this.Load += new System.EventHandler(this.FormEdit_Load);
+            this.Shown += new System.EventHandler(this.FormEdit_Shown);
             this.ResumeLayout(false);
 
         }
